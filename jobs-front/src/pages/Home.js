@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios"
 
 
-const JobList = ()=> {
+export function Home() {
     
     const [job, setJob] = useState([])
     const getJob = () => {
@@ -20,6 +20,14 @@ useEffect(() => {
 return(
     <>
         <h1>Ella's Job Hunt</h1>
+            {job.map((job) => {
+                return (
+                    <div className='jobs' key={'job.id'}>
+                        <h4><Link to = {`/${job._id}`}>{job.title}</Link></h4>
+                        <h5>{job.company}</h5>
+                     </div>
+                )
+            })}
         
     
     </>
@@ -29,3 +37,4 @@ return(
 
 
 }
+
