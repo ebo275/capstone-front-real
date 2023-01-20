@@ -5,7 +5,7 @@ import axios from "axios"
 export function Job() {
     const { id } = useParams()
 
-    const [job, setJob] = useState([])
+    const [jobId, setJobId] = useState([])
 //     const getJob = () => {
 //         axios.get('https://capstone-be.herokuapp.com/api/jobs').then((res) => {
 //             console.log(res.data)
@@ -18,27 +18,28 @@ export function Job() {
 // }, [])
 
 useEffect(()=>{
+    console.log(id)
     axios.get(`https://capstone-be.herokuapp.com/api/jobs/${id}`)
     .then((response)=>{
         console.log(response.data);
-        setJob(response.data);
+        setJobId(response.data);
     })
     .catch((err)=>{console.log(err)})
 }, [id])
         
 
+
     return (
         <>
-        
-            {job.map((job) => {
-                return (
-                    <div className='jobs' key={'job.id'}>
-                        <h4>{job.id}</h4>
-                        <h4>{job.title}</h4>
-                        <h5>{job.company}</h5>
-                     </div>
-                )
-            })}
+            <h1>{jobId.title}</h1>
+            <h4>{jobId.company}</h4>
+            <h4>{jobId.salary}</h4>
+            <h4>{jobId.dateApplied}</h4>
+            <h4>{jobId.response}</h4>
+
+
+
+           
         </>
     )
 }

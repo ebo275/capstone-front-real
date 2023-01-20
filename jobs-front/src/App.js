@@ -13,6 +13,7 @@ const App = () => {
 
   const [jobList, setJobList] = useState([])
 
+  const [jobId, setJobId] = useState([])
   
   return (
     <>
@@ -27,10 +28,10 @@ const App = () => {
         </ul>
       </nav>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/:_id" element={<Job />} />
+        <Route path="/" element={<Home setJobId={setJobId} jobId={jobId} />} />
+        <Route path="/display/:id" element={<Job />} />
         <Route path='/add' element={<Add jobList={jobList} setJobList={setJobList}/>} />
-
+        
       </Routes>
     
     </>

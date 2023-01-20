@@ -17,14 +17,22 @@ useEffect(() => {
     getJob()
 }, [])
 
+const handleDelete = (id) => {
+    axios.delete('https://capstone-be.herokuapp.com/api/jobs/' + id).then((res) => {
+      console.log(res.data)
+      getJob()
+    })
+  }
 return(
     <>
         <h1>Ella's Job Hunt</h1>
-            {job.map((job) => {
+            {job.map((job, key) => {
                 return (
-                    <div className='jobs' key={'job.id'}>
-                        <h4><Link to = {`/${job._id}`}>{job.title}</Link></h4>
+                    <div className='jobs' key={key}>
+                        <h4><Link to = {`/display/${job.id}`}>{job.title}</Link></h4>
                         <h5>{job.company}</h5>
+                        <button onClick={()=> {handleDelete(job.id)}}>x</button>
+
                      </div>
                 )
             })}
