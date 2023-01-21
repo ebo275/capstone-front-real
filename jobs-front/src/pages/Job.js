@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios"
 
@@ -36,9 +36,9 @@ useEffect(()=>{
             <h4>{jobId.salary}</h4>
             <h4>{jobId.dateApplied}</h4>
             <h4>{jobId.response}</h4>
-
-
-
+            <h4>
+            <Link to='/edit'>Edit this Job</Link>
+            </h4>
            
         </>
     )

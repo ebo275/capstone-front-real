@@ -7,6 +7,7 @@ import { Job } from './pages/Job';
 import { BrowserRouter } from 'react-router-dom';
 import { Add } from "./pages/Add"
 import { useState } from 'react'
+import { Edit } from './pages/Edit';
 
 
 const App = () => {
@@ -25,13 +26,15 @@ const App = () => {
           <li>
             < Link to="/add">Add a Job</Link>
           </li>
+          
         </ul>
       </nav>
       <Routes>
         <Route path="/" element={<Home setJobId={setJobId} jobId={jobId} />} />
         <Route path="/display/:id" element={<Job />} />
         <Route path='/add' element={<Add jobList={jobList} setJobList={setJobList}/>} />
-        
+        <Route path='/edit' element={<Edit jobList={jobList} setJobList={setJobList}/>} />
+
       </Routes>
     
     </>
