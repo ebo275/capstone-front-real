@@ -6,16 +6,7 @@ export function Job() {
     const { id } = useParams()
 
     const [jobId, setJobId] = useState([])
-//     const getJob = () => {
-//         axios.get('https://capstone-be.herokuapp.com/api/jobs').then((res) => {
-//             console.log(res.data)
-//             setJob(res.data)
-//         })
-//     }
 
-// useEffect(() => {
-//     getJob()
-// }, [])
 
 useEffect(()=>{
     console.log(id)
@@ -37,7 +28,7 @@ useEffect(()=>{
             <h4>{jobId.dateApplied}</h4>
             <h4>{jobId.response}</h4>
             <h4>
-            <Link to='/edit'>Edit this Job</Link>
+            <Link to={`/edit/${jobId.id}`}>Edit this Job</Link>
             </h4>
            
         </>

@@ -33,7 +33,7 @@ const App = () => {
         <Route path="/" element={<Home setJobId={setJobId} jobId={jobId} />} />
         <Route path="/display/:id" element={<Job />} />
         <Route path='/add' element={<Add jobList={jobList} setJobList={setJobList}/>} />
-        <Route path='/edit' element={<Edit jobList={jobList} setJobList={setJobList}/>} />
+        <Route path='/edit/:id' element={<Edit jobList={jobList} setJobList={setJobList}/>} />
 
       </Routes>
     

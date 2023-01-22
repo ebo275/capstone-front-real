@@ -4,29 +4,58 @@ import axios from "axios"
 
 export function Edit(){
 
+    const { id } = useParams()
+     const [title, setTitle] = useState('');
+     const [company, setCompany] = useState('');
+     const [salary, setSalary] = useState(0);
+     const [dateApplied, setDateApplied] = useState('');
+    //  const [response, setResponse] = useState(false);
 
-    let emptyJob = { title: '', company: '', salary: '', dateApplied: '', response: false}
 
-    const [job, setJob] = useState(emptyJob)
 
-    const handleChange = (event) => {
-        setJob({...job, [event.target.name]: event.target.value})
-    }
+    useEffect(()=>{
+        console.log(id)
+        axios.get(`https://capstone-be.herokuapp.com/api/jobs/${id}`)
+        .then((response)=>{
+            console.log(response.data);
+            setTitle(response.data.title);
+            setCompany(response.data.company);
+            setSalary(response.data.salary);
+            setDateApplied(response.data.dateApplied);
 
-    const handleUpdate = (editJob) => {
-        console.log(editJob)
-        axios.put('https://capstone-be.herokuapp.com/api/jobs' + editJob.id, editJob)
-          .then((response) => {
-            console.log(response)
-            console.log(response.data)
-          }).catch((error)=> {
-            console.log(error)
-          })
-      }
+        })
+        .catch((err)=>{console.log(err)})
+    }, [id])
+
+
+    // const handleChange = (event) => {
+    //     setJobId({...jobId, [event.target.name]: event.target.value})
+    // }
+
+    // const handleUpdate = (editJob) => {
+    //     console.log(editJob)
+    //     axios.put(`https://capstone-be.herokuapp.com/api/jobs/${id}`, editJob)
+    //       .then((response) => {
+    //         console.log(response)
+    //         console.log(response.data)
+    //       }).catch((error)=> {
+    //         console.log(error)
+    //       })
+    //   }
 
       const handleSubmit = (event) => {
-        event.preventDefault()
-        handleUpdate(job)
+        event.preventDefault();
+        axios.put(`https://capstone-be.herokuapp.com/api/jobs/${id}`, {
+            title,
+            company,
+            salary,
+            dateApplied
+        }).then((response)=> {
+            console.log(response.data)
+        }).catch((error)=>{
+            console.log(error)
+        })
+        
     }
 
     return(
@@ -39,8 +68,8 @@ export function Edit(){
           <input
             type="text"
             name="title"
-            value={job.title}
-            onChange={handleChange}
+            value={title}
+            onChange={(event)=> setTitle(event.target.value)} 
           />
           <br />
           <br />
@@ -48,17 +77,17 @@ export function Edit(){
           <input
             type="text"
             name="company"
-            value={job.company}
-            onChange={handleChange}
+            value={company}
+            onChange={(event)=> setCompany(event.target.value)}
           />
           <br />
           <br />
           <label htmlFor="salary">Salary: </label>
           <input
-            type="text"
+            type="number"
             name="salary"
-            value={job.salary}
-            onChange={handleChange}
+            value={salary}
+            onChange={(event)=> setSalary(event.target.value)}
           />
           <br />
           <br />
@@ -66,21 +95,13 @@ export function Edit(){
           <input
             type="text"
             name="dateApplied"
-            value={job.dateApplied}
-            onChange={handleChange}
+            value={dateApplied}
+            onChange={(event)=> setDateApplied(event.target.value)}
           />
-          <br />
-          <br />
-          <label htmlFor="response">Response: </label>
-          <input
-            type="checkbox"
-            name="response"
-            value={job.response}
-            onChange={handleChange}
-          />
+          
           <br/>
           <br/>
-          <input type="submit" />
+          <button type="submit"><Link to='/'>Submit</Link></button>
         </form>
         </>
     )
