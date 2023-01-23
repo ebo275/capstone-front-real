@@ -9,7 +9,7 @@ export function Edit(){
      const [company, setCompany] = useState('');
      const [salary, setSalary] = useState(0);
      const [dateApplied, setDateApplied] = useState('');
-    //  const [response, setResponse] = useState(false);
+     const [response, setResponse] = useState(false);
     const navigate = useNavigate();
 
 
@@ -22,7 +22,7 @@ export function Edit(){
             setCompany(response.data.company);
             setSalary(response.data.salary);
             setDateApplied(response.data.dateApplied);
-
+            setResponse(response.data.response);
         })
         .catch((err)=>{console.log(err)})
     }, [id])
@@ -49,7 +49,8 @@ export function Edit(){
             title,
             company,
             salary,
-            dateApplied
+            dateApplied,
+            response
         }).then((response)=> {
             console.log(response.data)
             navigate(`/display/${id}`)
@@ -79,6 +80,10 @@ export function Edit(){
         <div className="mb-3">
             <label htmlFor="dateApplied" className="form-label">dateApplied: </label>
             <input onChange={(event) => setDateApplied(event.target.value)} value={dateApplied} type="text" className="form-control" id="dateApplied" />
+        </div>
+        <div className="mb-3">
+            <label htmlFor="response" className="form-label">Response: </label>
+            <input onChange={(event) => setResponse(event.target.value)} value={response} type="checkbox" className="form-control" id="response" />
         </div>
         <button type="submit" className="btn btn-primary">Edit</button>
         </form>
