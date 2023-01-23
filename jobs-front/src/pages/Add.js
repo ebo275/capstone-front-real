@@ -28,6 +28,7 @@ export function Add (props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         handleCreate(job)
+        navigate('/');
     }
     
     return (
@@ -50,10 +51,12 @@ export function Add (props) {
         <input type="text" name="dateApplied" value= {job.dateApplied} onChange = {handleChange} />
         <br />
         <br />
-        
+        <label htmlFor="response">Response: </label>
+        <input type="checkbox" name="response" value ={job.response} onChange = {handleChange}/>
         <br/>
         <br/>
-        <button type="submit"><Link to='/'>Submit</Link></button>
+        <button type="submit">submit
+        </button>
       </form>
         </div>
     )

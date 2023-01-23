@@ -10,7 +10,7 @@ export function Edit(){
      const [salary, setSalary] = useState(0);
      const [dateApplied, setDateApplied] = useState('');
     //  const [response, setResponse] = useState(false);
-
+    const navigate = useNavigate();
 
 
     useEffect(()=>{
@@ -52,6 +52,7 @@ export function Edit(){
             dateApplied
         }).then((response)=> {
             console.log(response.data)
+            navigate(`/display/${id}`)
         }).catch((error)=>{
             console.log(error)
         })
@@ -60,49 +61,28 @@ export function Edit(){
 
     return(
         <>
-        <h1>
-            Edit this Job
-        </h1>
+       <div className="container text-bg-dark">
+        <h1>Edit Post</h1>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="title">Title: </label>
-          <input
-            type="text"
-            name="title"
-            value={title}
-            onChange={(event)=> setTitle(event.target.value)} 
-          />
-          <br />
-          <br />
-          <label htmlFor="company">Company: </label>
-          <input
-            type="text"
-            name="company"
-            value={company}
-            onChange={(event)=> setCompany(event.target.value)}
-          />
-          <br />
-          <br />
-          <label htmlFor="salary">Salary: </label>
-          <input
-            type="number"
-            name="salary"
-            value={salary}
-            onChange={(event)=> setSalary(event.target.value)}
-          />
-          <br />
-          <br />
-          <label htmlFor="dateApplied">Date Applied: </label>
-          <input
-            type="text"
-            name="dateApplied"
-            value={dateApplied}
-            onChange={(event)=> setDateApplied(event.target.value)}
-          />
-          
-          <br/>
-          <br/>
-          <button type="submit"><Link to='/'>Submit</Link></button>
+        <div className="mb-3">
+            <label htmlFor="title" className="form-label">Title: </label>
+            <input onChange={(event) => setTitle(event.target.value)} value={title} type="text" className="form-control" id="title" />
+        </div>
+        <div className="mb-3">
+            <label htmlFor="company" className="form-label">Company: </label>
+            <input onChange={(event) => setCompany(event.target.value)} value={company} type="text" className="form-control" id="company" />
+        </div>
+        <div className="mb-3">
+            <label htmlFor="salary" className="form-label">Salary: </label>
+            <input onChange={(event) => setSalary(event.target.value)} value={salary} type="text" className="form-control" id="salary" />
+        </div>
+        <div className="mb-3">
+            <label htmlFor="dateApplied" className="form-label">dateApplied: </label>
+            <input onChange={(event) => setDateApplied(event.target.value)} value={dateApplied} type="text" className="form-control" id="dateApplied" />
+        </div>
+        <button type="submit" className="btn btn-primary">Edit</button>
         </form>
+        </div>
         </>
     )
 }
