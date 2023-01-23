@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router-dom'
 import { Home } from "./pages/Home"
 import { Link } from "react-router-dom";
 import { Job } from './pages/Job';
-import { BrowserRouter } from 'react-router-dom';
 import { Add } from "./pages/Add"
 import { useState } from 'react'
 import { Edit } from './pages/Edit';

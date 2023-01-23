@@ -1,3 +1,11 @@
+This app is for the user who is reluctant to use excel spreadsheets. Particulatly geared towards those with ADHD, it is designed to make tracking your job hunt easier. 
+
+Hiccups: I began using redux on this same project and lost much time on failed attempts. As a last resort, I opted to use Router in conjunction with React and it went smoother. The hardest part for me was passing the ID through to each individual page and recognizing what I wanted to be displayed on each page. 
+
+Backend: Django backend. That went very smoothly actually, so I'm thankful for that. 
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
