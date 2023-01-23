@@ -22,14 +22,14 @@ useEffect(()=>{
 
     return (
         <>
-            <h1>{jobId.title}</h1>
-            <h4>{jobId.company}</h4>
-            <h4>{jobId.salary}</h4>
-            <h4>{jobId.dateApplied}</h4>
-            <h4>{jobId.response}</h4>
-            <h4>
+            <h1 className="display">{jobId.title}</h1>
+            <h4 className="display">{jobId.company}</h4>
+            <h4 className="display">{jobId.salary}</h4>
+            <h4 className="display">{jobId.dateApplied}</h4>
+            <h4 className="display">{jobId.response}</h4>
+            <button type="button" className="btn btn-info">
             <Link to={`/edit/${jobId.id}`}>Edit this Job</Link>
-            </h4>
+            </button>
            
         </>
     )

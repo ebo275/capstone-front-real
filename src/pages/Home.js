@@ -25,13 +25,13 @@ const handleDelete = (id) => {
   }
 return(
     <>
-        <h1>Ella's Job Hunt</h1>
+        <h1 id="header">Ella's Job Hunt</h1>
             {job.map((job, key) => {
                 return (
                     <div className='jobs' key={key}>
                         <h4><Link to = {`/display/${job.id}`}>{job.title}</Link></h4>
                         <h5>{job.company}</h5>
-                        <button onClick={()=> {handleDelete(job.id)}}>x</button>
+                        <button type="button" className="btn btn-info" onClick={()=> {handleDelete(job.id)}}>Delete</button>
 
                      </div>
                 )

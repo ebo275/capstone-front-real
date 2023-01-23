@@ -19,11 +19,17 @@ const App = () => {
     <>
       <nav>
         <ul>
-          <li>
+          <li className='list'>
+            <button type="button" className="btn btn-info">
             < Link to="/">Home</Link>
+            </button>
           </li>
-          <li>
+          <br>
+          </br>
+          <li className='list'>
+            <button type="button" className="btn btn-info">
             < Link to="/add">Add a Job</Link>
+            </button> 
           </li>
           
         </ul>
