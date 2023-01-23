@@ -29,8 +29,8 @@ return(
             {job.map((job, key) => {
                 return (
                     <div className='jobs' key={key}>
-                        <h4><Link to = {`/display/${job.id}`}>{job.title}</Link></h4>
-                        <h5>{job.company}</h5>
+                        <h4 className="display"><Link to = {`/display/${job.id}`}>{job.title}</Link></h4>
+                        <h5 className="display">{job.company}</h5>
                         <button type="button" className="btn btn-info" onClick={()=> {handleDelete(job.id)}}>Delete</button>
 
                      </div>
